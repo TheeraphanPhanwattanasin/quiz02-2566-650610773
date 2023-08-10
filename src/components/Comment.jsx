@@ -9,15 +9,7 @@ export const Comment = ({
 }) => {
   let havelike = false;
   if (likeNum > 0) havelike = true;
-  const allreplies = replies.map((rep) => (
-    <Reply
-      userImagePath={rep.userImagePath}
-      username={rep.username}
-      replyText={rep.replyText}
-      likeNum={rep.likeNum}
-      key={rep.username}
-    />
-  ));
+  let allreplies;
 
   return (
     <div>
@@ -46,7 +38,17 @@ export const Comment = ({
           )}
         </div>
       </div>
-      {allreplies}
+      {
+        (allreplies = replies.map((rep) => (
+          <Reply
+            userImagePath={rep.userImagePath}
+            username={rep.username}
+            replyText={rep.replyText}
+            likeNum={rep.likeNum}
+            key={rep.username}
+          />
+        )))
+      }
     </div>
   );
 };

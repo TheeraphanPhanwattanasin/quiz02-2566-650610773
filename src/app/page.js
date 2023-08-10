@@ -5,16 +5,7 @@ import { Comment } from "@/components/Comment";
 import { comments } from "@/libs/comments";
 
 export default function HomePage() {
-  const allcomment = comments.map((com) => (
-    <Comment
-      userImagePath={com.userImagePath}
-      username={com.username}
-      commentText={com.commentText}
-      likeNum={com.likeNum}
-      replies={com.replies}
-      key={com.username}
-    />
-  ));
+  let allcomment;
   return (
     <div
       style={{ minHeight: "100vh", backgroundColor: "#18191A" }}
@@ -30,7 +21,19 @@ export default function HomePage() {
           id="650610773"
           img="/profileImages/bossq2.png"
         />
-        {allcomment}
+        {
+          (allcomment = comments.map((com) => (
+            <Comment
+              userImagePath={com.userImagePath}
+              username={com.username}
+              s
+              commentText={com.commentText}
+              likeNum={com.likeNum}
+              replies={com.replies}
+              key={com.username}
+            />
+          )))
+        }
       </div>
     </div>
   );
